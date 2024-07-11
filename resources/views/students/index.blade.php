@@ -48,7 +48,8 @@
         }
         .course-button {
             background-color: #00d1a1;
-            padding: 10px;
+         
+            padding: 20px;
             text-align: center;
             border-radius: 5px;
             border: none;
@@ -288,7 +289,8 @@
         <button class="course-button">Cet-303</button>
         <button class="course-button">Cet-403</button>
     </div>
-   
+
+  
 
     <script>
         document.getElementById('bsitButton').addEventListener('click', function() {
@@ -342,5 +344,32 @@
             document.getElementById('cetYearList').style.display = 'grid';
         });
     </script>
+
+  <div>
+        <h1>Student Evaluation and Consultation</h1>
+        <img src="path/to/logo.png" alt="Logo">
+        <div>
+            @foreach ($students as $student)
+                <h2>{{ $student->name }}</h2>
+                <p>Gender: {{ $student->gender }}</p>
+                <p>Course: {{ $student->course }}</p>
+                <p>Student Number: {{ $student->student_number }}</p>
+
+                <h3>List of Teachers</h3>
+                <ul>
+                    @foreach ($student->teachers as $teacher)
+                        <li>
+                            {{ $teacher->name }}
+                            <a href="#">Current Evaluation</a>
+                            <a href="#">Past Evaluation</a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endforeach
+        </div>
+    </div>
+
+</body>
+</html>
 
 @endsection

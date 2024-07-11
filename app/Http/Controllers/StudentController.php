@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Section;
 use App\Models\Course;
+use App\Models\Teacher;
 
 class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::with('section', 'course')->get();
+        $students = Student::all();
         return view('students.index', compact('students'));
     }
+
+    
 
     public function create()
     {
@@ -34,4 +37,16 @@ class StudentController extends Controller
 
         return redirect()->route('students.index')->with('success', 'Student created successfully.');
     }
+        public function show($id)
+    {
+        // Fetch a single student by ID
+        $student = Student::findOrFail($id);
+
+        // Fetch a collection of teachers
+        $teachers = Teacher::all();
+
+        return view('your_view_name', compact('students', 'teachers'));
+    }
+
+    
 }

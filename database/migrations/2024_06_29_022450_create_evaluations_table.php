@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('gender');
+            $table->string('course');
+            $table->string('student_number');
             $table->timestamps();
         });
     }
+    
+    
+    
 
     /**
      * Reverse the migrations.
