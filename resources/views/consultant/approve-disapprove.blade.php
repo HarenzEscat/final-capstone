@@ -5,55 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approve - Disapprove</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>
-        .circle {
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            border: 2px solid black;
-            display: inline-block;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .circle.selected {
-            background-color: black;
-        }
-        .hidden {
-            display: none;
-        }
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
-            display: inline-block;
-            text-align: left;
-        }
-        .modal-content h2 {
-            margin-top: 0;
-        }
-        .modal-content .actions {
-            text-align: center;
-        }
-        .modal-content .actions button {
-            margin: 0 10px;
-        }
-    </style>
+    
     <script>
         function toggleSelectionMode() {
             var circles = document.querySelectorAll('.circle');
@@ -123,21 +75,7 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Student Evaluation and Consultation</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Student List</a></li>
-                    <li><a href="/consultation">Appointment</a></li>
-                    <li><a href="/approve-disapprove">Approve - Disapprove</a></li>
-                    <li><a href="/calendar">Calendar</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Settings</a></li>
-                </ul>
-            </nav>
-        </div>
+   
         <div class="approve-disapprove-form">
             <h2>Approve - Disapprove Appointments</h2>
             <form action="{{ url('/approve-disapprove') }}" method="GET">
