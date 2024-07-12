@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\ApprovalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderDetailController;
 use App\Models\Category;
 use App\Models\Student;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TeacherController;
 
@@ -26,13 +29,16 @@ use App\Http\Controllers\TeacherController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return view('students.index');
+});
 
 Route::get('/',[EvaluationController::class,'index'])->middleware('auth')->name('evaluation');
 
 //Route::get('/',[StudentController::class,'index'])->middleware('auth')->name('student');
 
 
-Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+Route::get('/students', [StudentController::class, 'index'])->middleware('auth')->name('students.index');
 Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
 Route::post('/students', [StudentController::class, 'store'])->name('students.store');
 
@@ -48,3 +54,26 @@ Route::get('/section', [SectionController::class, 'index'])->name('section');
 Route::get('/course/{courseNumber}', function ($courseNumber) {
     return view('course_details', ['courseNumber' => $courseNumber]);
 });
+
+//for consultation
+
+Route::get('/', function () {
+    return view('consultation');
+});
+
+Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation');
+
+
+
+Route::get('/consultation', [ConsultationController::class, 'index']);
+Route::post('/consultation', [ConsultationController::class, 'store']);
+
+Route::get('/approve-disapprove', [ApprovalController::class, 'index']);
+Route::post('/approve-disapprove/approve/{id}', [ApprovalController::class, 'approve']);
+Route::post('/approve-disapprove/disapprove/{id}', [ApprovalController::class, 'disapprove']);
+Route::post('/approve-disapprove/delete', [ApprovalController::class, 'delete']);
+
+Route::get('/calendar', [EventController::class, 'index']);
+Route::post('/events', [EventController::class, 'store']);
+
+Route::get('/calendar/event/{id}', 'CalendarController@showEvent')->name('calendar.showEvent');

@@ -266,7 +266,6 @@
         <button class="course-button">Tourism-403</button>
     </div>
 
-    
     <h2 id="cetTitle" class="course-title"><center>CET YEAR LIST</center></h2>
     <div id="cetYearList" class="container">
         <div class="year">1ST YEAR</div>
@@ -345,31 +344,5 @@
         });
     </script>
 
-  <div>
-        <h1>Student Evaluation and Consultation</h1>
-        <img src="path/to/logo.png" alt="Logo">
-        <div>
-            @foreach ($students as $student)
-                <h2>{{ $student->name }}</h2>
-                <p>Gender: {{ $student->gender }}</p>
-                <p>Course: {{ $student->course }}</p>
-                <p>Student Number: {{ $student->student_number }}</p>
-
-                <h3>List of Teachers</h3>
-                <ul>
-                    @foreach ($student->teachers as $teacher)
-                        <li>
-                            {{ $teacher->name }}
-                            <a href="#">Current Evaluation</a>
-                            <a href="#">Past Evaluation</a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endforeach
-        </div>
-    </div>
-
-</body>
-</html>
 
 @endsection
