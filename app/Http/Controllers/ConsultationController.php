@@ -10,7 +10,7 @@ class ConsultationController extends Controller
     public function index()
     {
         // Your logic here, for example, returning a view
-        return view('consultation');
+        return view('consultant.consultation');
     }
 
     // ConsultationController.php
@@ -35,7 +35,7 @@ public function store(Request $request)
 
    // Add other variables as needed
 
-   return view('consultation', compact('name', 'course'));
+   return view('consultant.consultation', compact('name', 'course'));
     // Save the data to the database
     Appointment::create($validated);
 

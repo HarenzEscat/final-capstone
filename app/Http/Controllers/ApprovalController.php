@@ -14,7 +14,7 @@ class ApprovalController extends Controller
             return $query->where('name', 'like', "%$search%");
         })->where('status', 'pending')->get();
 
-        return view('approve-disapprove', compact('appointments', 'search'));
+        return view('consultant.approve-disapprove', compact('appointments', 'search'));
     }
 
     public function approve($id)
@@ -23,7 +23,7 @@ class ApprovalController extends Controller
         $appointment->status = 'approved';
         $appointment->save();
 
-        return redirect('/approve-disapprove')->with('success', 'Appointment approved successfully.');
+        return redirect('/consultant.approve-disapprove')->with('success', 'Appointment approved successfully.');
     }
 
     public function disapprove($id)
@@ -32,7 +32,7 @@ class ApprovalController extends Controller
         $appointment->status = 'disapproved';
         $appointment->save();
 
-        return redirect('/approve-disapprove')->with('success', 'Appointment disapproved successfully.');
+        return redirect('/consultant.approve-disapprove')->with('success', 'Appointment disapproved successfully.');
     }
 
     public function delete(Request $request)
@@ -40,6 +40,6 @@ class ApprovalController extends Controller
         $ids = explode(',', $request->input('idsToDelete'));
         Appointment::whereIn('id', $ids)->delete();
 
-        return redirect('/approve-disapprove')->with('success', 'Selected appointments deleted successfully.');
+        return redirect('/consultant.approve-disapprove')->with('success', 'Selected appointments deleted successfully.');
     }
 }

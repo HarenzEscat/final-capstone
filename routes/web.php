@@ -58,7 +58,7 @@ Route::get('/course/{courseNumber}', function ($courseNumber) {
 //for consultation
 
 Route::get('/', function () {
-    return view('consultation');
+    return view('consultant.consultation');
 });
 
 Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation');
