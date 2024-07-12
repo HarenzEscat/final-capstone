@@ -61,8 +61,8 @@ Route::get('/', function () {
     return view('consultant.layouts.consultation');
 });
 
-Route::get('/consultation', [ConsultationController::class, 'showForm'])->name('consultation.form');
-Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
+Route::get('/consultant.form', [ConsultationController::class, 'showForm'])->name('consultant.form');
+Route::post('/consultant.form', [ConsultationController::class, 'store'])->name('consultant.form.store');
 
 Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation');
 

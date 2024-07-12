@@ -35,7 +35,7 @@ public function store(Request $request)
 
    // Add other variables as needed
 
-   return view('consultant.consultation', compact('name', 'course'));
+   return view('consultant.form', compact('name', 'course'));
     // Save the data to the database
     Appointment::create($validated);
 
