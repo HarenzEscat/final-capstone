@@ -13,7 +13,7 @@ class EventController extends Controller
         $events = Event::all();
 
         // Pass events data to the view
-        return view('calendar', compact('events'));
+        return view('consultant.calendar', compact('events'));
     }
 
     public function store(Request $request)
