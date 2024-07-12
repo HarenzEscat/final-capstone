@@ -58,11 +58,13 @@ Route::get('/course/{courseNumber}', function ($courseNumber) {
 //for consultation
 
 Route::get('/', function () {
-    return view('consultant.consultation');
+    return view('consultant.layouts.consultation');
 });
 
-Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation');
+Route::get('/consultation', [ConsultationController::class, 'showForm'])->name('consultation.form');
+Route::post('/consultation', [ConsultationController::class, 'store'])->name('consultation.store');
 
+Route::get('/consultation', [ConsultationController::class, 'index'])->name('consultation');
 
 
 Route::get('/consultation', [ConsultationController::class, 'index']);

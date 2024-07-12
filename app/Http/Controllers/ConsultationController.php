@@ -10,7 +10,7 @@ class ConsultationController extends Controller
     public function index()
     {
         // Your logic here, for example, returning a view
-        return view('consultant.consultation');
+        return view('consultant.Layouts.consultation');
     }
 
     // ConsultationController.php
@@ -39,9 +39,19 @@ public function store(Request $request)
     // Save the data to the database
     Appointment::create($validated);
 
-    // Return back with a success message
-    return redirect()->back()->with('success', 'Appointment confirmed successfully.');
 }
 
+public function showForm()
+{
+    return view('consultant.form');
+}
+
+public function submitForm(Request $request)
+{
+    // Handle form submission logic here
+    // For example, save data to the database or send an email
+
+    return redirect()->route('consultation.form')->with('success', 'Appointment confirmed successfully.');
+}
 }
 
